@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/swiper.min.css">
+</head>
+<body>
+<div class="app">
+    <div class="app-headed">
+        <div class="app-headed__search">
+            <input type="text" placeholder="搜索优惠券" id="SearchCoupons">
+        </div>
+        <div class="app-headed__MaleVersion">
+            <span class="app-headed__MaleVersion--Male">男版</span>
+            <span class="app-headed__MaleVersion--Return fa fa-angle-right"></span>
+        </div>
+    </div>
+    <div class="app-body">
+        <div class="app_container">
+            <ul>
+                <li>今日精选</li>
+                <li class="app_container_MenWear">男装</li>
+                <li class="app_container_MenShoes">男鞋</li>
+                <li>食品</li>
+                <li>百货</li>
+                <img src="./icon/index-cate-six-34fb868a05.png" class="More">
+            </ul>
+        </div>
+        <div class="swiper-container swiper-button-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="./image/xmad_15548067900496_NDdkb.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/xmad_15548066591437_Stxlj.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/xmad_15548169614853_shmLX.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/xmad_15535933141925_ulkYv.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="app-body__ExplosiveMoney">
+            <img src="image/by.png" class="app-body__FreeShipping">
+            <img src="image/bk.png" class="app-body__ExplosiveShipping">
+        </div>
+        <div class="app-body_commodity"></div>
+        <div class=" app-body_commodity-1"></div>
+    </div>
+    <!--搜索框-->
+    <div class="SearchBox">
+        <div class="SearchBox__search">
+            <span class="search_white">
+                <img src="icon/Search.png" alt="" class="SearchIcon">
+            </span>
+            <input type="text" placeholder="请输入商品名或粘贴淘宝标题" id="SearchBoxCoupons">
+            <span class="SearchBox__MaleVersion--Return fa fa-times-circle-o"></span>
+        </div>
+        <div class="SearchBox__MaleVersion">
+            <span class="SearchBox__MaleVersion--Male">取消</span>
+        </div>
+        <div class="Every">
+            <p>大家都在搜</p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="script/flexible.js"></script>
+<script src="script/jquery-3.3.1.js"></script>
+<script src="script/mock.js"></script>
+<script src="script/index.js"></script>
+<script src="script/swiper.min.js"></script>
+<script>
+    //轮播图
+    var mySwiper = new Swiper('.swiper-container', {
+        on: {
+            onmouseover: function () {
+                clearInterval()
+            }
+        },
+        autoplay: {
+            delay: 2000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+        centerInsufficientSlides: true,
+        loopAdditionalSlides: 3,
+        loop: true, // 循环模式选项
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+
+    //随机数
+    var data = Mock.mock({
+        'num|5':[{
+            'images': '@image((200x200, @color, #FFF, png, @string)',
+            'Title': '@csentence(1, 10)',
+            'Number': '@integer(9999,10000)',
+            'Price': '@float(1, 10, 1, 0)',
+            'subsidy': '@float(45, 46, 1, 0)',
+            'original': '@float(49, 49, 1, 0)',
+            'btn': '@float(3, 4, 1, 1)'
+        }]
+    });
+    for(var i = 0; i < data.num.length; i++){
+        $.dialog({
+            // el: '.app-body_commodity',
+            images: data.num[i].images,
+            Title_i: data.num[i].Title_i,
+            Title: data.num[i].Title,
+            Number: data.num[i].Number,
+            Price: data.num[i].Price,
+            subsidy: data.num[i].subsidy,
+            original: data.num[i].original,
+            btn: data.num[i].btn
+        });
+    };
+
+    //点击男版切换的弹出
+    $.alter({});
+    $('.app-headed__MaleVersion--Male').on('click', function () {
+        $('.sex_select__box').show(100);
+    });
+    //点击女孩收起弹窗，改变文字
+    $('.sex_select__gir').click(function () {
+        $('.sex_select__box').hide(100);
+        $('.app-headed__MaleVersion--Male').text('女版');
+        $('.app_container_MenWear').text('女装');
+        $('.app_container_MenShoes').text('女鞋');
+    });
+    //点击男孩收起弹窗，改变文字
+    $('.sex_select__men').click(function () {
+        $('.sex_select__box').hide(100);
+        $('.app-headed__MaleVersion--Male').text('男版');
+        $('.app_container_MenWear').text('男装');
+        $('.app_container_MenShoes').text('男鞋');
+    });
+
+    //点击搜索框
+    $('#SearchCoupons').on('click', function () {
+        $('.SearchBox').show(100);
+    });
+    $('.SearchBox__MaleVersion--Male').on('click', function () {
+        $('.SearchBox').hide(100);
+        $('#SearchBoxCoupons').val('');
+    });
+    $('.SearchBox__MaleVersion--Return').click(function () {
+        $('#SearchBoxCoupons').val('').focus();
+    });
+
+    //点击更多
+    var data1 = Mock.mock({
+        'num|13':[{
+            'images':['./icon/today-best-choose-icon-e566c712cb.png',
+                // './icon/539805c2061f9ee9a9.jpg',
+                // './icon/112155b87cc6cb3e0d.jpg',
+                // './icon/676725b87cc96c5342.jpg',
+                // './icon/327545aea7ad73e73a.jpeg',
+                // './icon/487585a309908c96c5.jpeg',
+                // './icon/314885a1d321bbae7f.jpg',
+                // './icon/233855b7f84546bdc3.png',
+                // './icon/627375a324072147f8.jpeg',
+                // './icon/764985b87ccbc46599.jpg',
+                // './icon/1437553592.jpg',
+                // 'icon/100005a1d33dc1fafc.jpeg',
+                // './icon/1436524847.jpg'
+                ],
+            'title':[
+                '今日精选',
+                // '男装',
+                // '男鞋',
+                // '食品',
+                // '百货',
+                // '内衣袜子',
+                // '箱包配饰',
+                // '母婴',
+                // '家纺建材',
+                // '个护',
+                // '数码',
+                // '家电',
+                // '运动'
+            ]
+        }]
+    });
+     $.Merchan_m({});
+    for (var j = 0;j < data1.num.length; j++ ) {
+        $.Merchan_m({});
+        $.Today_y({
+            SelectionImages:data1.num[j].images,
+            inntext:data1.num[j].title
+        });
+    }
+    $('.More').click(function () {
+        $('.app_Merchandise').show(100);
+    });
+    $('.app_Merchandise_step').click(function () {
+        $('.app_Merchandise').hide(100);
+    });
+</script>
+</html>

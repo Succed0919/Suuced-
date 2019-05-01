@@ -1,0 +1,407 @@
+@function rem ($px) {
+  @return ($px/124.2)+rem;
+}
+@mixin translate ($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #f8f8f8;
+  .app-headed > * {
+    vertical-align: center;
+  }
+  .app-headed {
+    width: 10rem;
+    height: rem(160);
+    background: -webkit-linear-gradient(to right, #ff5f11, red); /*webkit核心浏览器兼容代码*/
+    background: -o-linear-gradient(to right, #ff5f11, red); /*Opera浏览器兼容代码*/
+    background: -moz-linear-gradient(to right, #ff5f11, red); /*Firefox 浏览器兼容代码*/
+    background: linear-gradient(to right, #ff5f11, red);
+    .app-headed__search {
+      display: inline-block;
+      margin-left: rem(52);
+      margin-top: rem(30);
+      text-align: center;
+      #SearchCoupons {
+        display: inline-block;
+        width: 7rem;
+        height: rem(100);
+        line-height: rem(100);
+        background: rgba(250, 250, 250, .5);
+        //background-image: url("../icon/search-white-icon-69a3f21fd0.png");
+        //background-repeat: no-repeat;/*背景小图标不重复*/
+        //background-position: rem(250) rem(20);/*小图标在input的位置*/
+        //background-size: rem(60);/*小图标的大小*/
+        border: none;
+        border-radius: 1px;
+      }
+      //在input添加图片并且居中
+      #SearchCoupons::-webkit-input-placeholder {
+        background-image: url("../icon/search-white-icon-69a3f21fd0.png");
+        background-repeat: no-repeat; /*背景小图标不重复*/
+        background-position: rem(250) rem(20); /*小图标在input的位置*/
+        background-size: rem(60); /*小图标的大小*/
+        line-height: rem(100);
+        padding-left: rem(310);
+        color: white;
+      }
+    }
+    .app-headed__MaleVersion {
+      display: inline-block;
+      .app-headed__MaleVersion--Male {
+        display: inline-block;
+        height: rem(100);
+        color: white;
+        font-size: rem(50);
+        margin-left: rem(40);
+        line-height: rem(100);
+      }
+      .app-headed__MaleVersion--Return {
+        display: inline-block;
+        height: rem(100);
+        line-height: rem(100);
+        color: white;
+        font-size: rem(70);
+        margin-left: rem(50);
+      }
+    }
+  }
+  .app-body {
+    width: 10rem;
+    overflow: hidden;
+    .app_container {
+      width: 10rem;
+      ul {
+        cursor: pointer;
+      }
+      li {
+        font-size: rem(50);
+        display: inline-block;
+        line-height: rem(150);
+        text-align: center;
+        width: 1.8rem;
+      }
+      li:hover {
+        color: red;
+        border-bottom: red 2px solid;
+      }
+      img {
+        width: .5rem;
+        height: .4rem;
+      }
+    }
+    .app-body-swiper-wrapper {
+      position: relative;
+      width: 100%;
+      height: rem(130);
+      .swiper-slide {
+        display: inline-block;
+        background: #f1f1f1;
+        color: #000;
+        text-align: center;
+        line-height: rem(130);
+      }
+    }
+    //轮播图
+    .swiper-wrapper {
+      height: rem(386);
+      .swiper-slide {
+        cursor: pointer;
+        line-height: rem(386);
+        img {
+          width: 10rem;
+          height: rem(392);
+        }
+      }
+    }
+
+    .app-body__ExplosiveMoney {
+      display: inline-block;
+      width: 10rem;
+      .app-body__FreeShipping {
+        display: inline-block;
+        cursor: pointer;
+        width: rem(613);
+        height: rem(310);
+      }
+      .app-body__ExplosiveShipping {
+        cursor: pointer;
+        width: rem(618);
+        height: rem(310);
+      }
+    }
+    .app-body_commodity > * {
+      vertical-align: center;
+    }
+
+  }
+
+  //JQuery随机生成商品
+  .Commodity {
+    display: inline-block;
+    width: 10rem;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    .CommodityImg {
+      display: inline-block;
+      width: rem(429);
+      height: rem(429);
+      border: black solid 1px;
+      margin-top: rem(27);
+      margin-left: rem(40);
+    }
+    .CommodityContent {
+      position: absolute;
+      top: rem(50);
+      left: rem(500);
+      display: inline-block;
+      .CommodityContent_Title {
+        font-size: rem(46);
+        letter-spacing: rem(3);
+      }
+      .CommodityContent_Number {
+        margin-top: rem(30);
+        font-size: rem(42);
+        color: #fe5855;
+      }
+      .CommodityContent_Price {
+        font-size: rem(61);
+        color: red;
+        font-weight: bold;
+        position: absolute;
+        top: rem(180);
+      }
+      .CommodityContent_Subsidy {
+        width: rem(198);
+        height: rem(47);
+        line-height: rem(47);
+        font-size: rem(30);
+        background: #ffeced;
+        position: absolute;
+        top: rem(180);
+        left: rem(210);
+        text-align: center;
+        border-top-left-radius: 15%;
+        border-top-right-radius: 15%;
+        border-bottom-right-radius: 15%;
+      }
+      .CommodityContent_Original {
+        width: rem(200);
+        font-size: rem(40);
+        position: absolute;
+        color: #9c9c9c;
+        top: rem(190);
+        left: rem(500);
+      }
+      .CommodityContent_btn {
+        width: rem(694);
+        height: rem(99);
+        position: absolute;
+        top: rem(270);
+        border-radius: rem(12);
+        text-align: center;
+        color: white;
+        font-size: rem(52);
+        line-height: rem(99);
+        background: -webkit-linear-gradient(to right, #ff5b29, red); /*webkit核心浏览器兼容代码*/
+        background: -o-linear-gradient(to right, #ff5f11, red); /*Opera浏览器兼容代码*/
+        background: -moz-linear-gradient(to right, #ff5f11, red); /*Firefox 浏览器兼容代码*/
+        background: linear-gradient(to right, #ff5f11, red);
+      }
+    }
+  }
+
+  //点击男版切换的弹出
+  .sex_select__box{
+    position: absolute;
+    top: rem(289);
+    width: 10rem;
+    height: 100vh;
+    z-index: 999;
+    padding: 1px;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    .sex_select{
+      width: rem(996);
+      height: rem(944);
+      border-radius: rem(16);
+      margin-left: rem(120);
+      background-color: white;
+      margin-top: rem(306);
+      .sex-select__img{
+        padding-top: rem(56);
+        text-align: right;
+        margin-right: rem(41);
+      }
+      .sex_select__title{
+        font-size: rem(79);
+        padding-top: rem(40);
+        text-align: center;
+      }
+      .sex_select__item{
+        font-size: rem(41);
+        color: #bfbfbf;
+        margin-top: rem(47);
+        text-align: center;
+      }
+      .sex_select__sex{
+        margin-top: rem(113);
+        .sex_select__gir{
+          margin-left: rem(220);
+          margin-left: rem(220);
+        }
+        .sex_select__men{
+          margin-left: rem(200);
+        }
+        .SwitchContent_images{
+          width:rem(209);
+        }
+      }
+    }
+  }
+
+
+  //点击更多图标显示更多
+  .app_Merchandise {
+    display: none;
+    position: absolute;
+    top: rem(150);
+    left: 0;
+    overflow: hidden;
+    width: 10rem;
+    height: rem(1525);
+    z-index: 999;
+    .app_Merchandise_top {
+      background: white;
+      border-bottom-left-radius: rem(2);
+      border-bottom-right-radius: rem(2);
+      -webkit-box-shadow: #666 0 0 rem(10);
+      box-shadow: #666 0 0 rem(10);
+      .app_Merchandise_All {
+        display: inline-block;
+        width: 4.8rem;
+        height: rem(133);
+        line-height: rem(133);
+        font-size: rem(45);
+        margin-left: 4rem;
+      }
+      .app_Merchandise_step {
+        display: inline-block;
+        font-size: rem(45);
+        color: #9c9c9c;
+      }
+    }
+    .app_Merchandise_details {
+      overflow: hidden;
+      width: 10rem;
+      height: rem(1100);
+      background: white;
+      .TodaySelection {
+        display: inline-block;
+        width: 2.3rem;
+        text-align: center;
+        margin-top: rem(60);
+        .TodaySelection_image {
+          display: inline-block;
+          width: 2.5rem;
+          img {
+            display: inline-block;
+            width: rem(100);
+            height: rem(100);
+          }
+        }
+        .TodaySelection_text {
+          display: inline-block;
+          font-size: rem(38);
+          margin-left: rem(30);
+          margin-top: rem(30);
+        }
+      }
+    }
+  }
+
+  //点击搜索框
+  .SearchBox > * {
+    vertical-align: center;
+  }
+  .SearchBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 10rem;
+    height: rem(160);
+    background: white;
+    z-index: 999;
+    .SearchBox__search {
+      display: inline-block;
+      margin-left: rem(52);
+      margin-top: rem(30);
+      text-align: center;
+      position: relative;
+      #SearchBoxCoupons {
+        text-indent: rem(120);
+        display: inline-block;
+        width: 7rem;
+        height: rem(100);
+        line-height: rem(100);
+        background: #f7f7f7;
+        border: none;
+        border-radius: 1px;
+      }
+      #SearchBoxCoupons::-webkit-input-placeholder {
+        line-height: rem(100);
+        padding-left: rem(20);
+        color: #757575;
+      }
+      .SearchIcon{
+        position: absolute;
+        top: rem(25);
+        left: rem(51);
+        width: rem(50);
+      }
+      .SearchBox__MaleVersion--Return{
+        position: absolute;
+        top: rem(35);
+        left: rem(800);
+        width: rem(50);
+      }
+    }
+    .SearchBox__MaleVersion {
+      display: inline-block;
+      .SearchBox__MaleVersion--Male {
+        display: inline-block;
+        height: rem(100);
+        color: #757575;
+        font-size: rem(50);
+        margin-left: rem(70);
+        line-height: rem(100);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
