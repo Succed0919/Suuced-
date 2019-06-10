@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none; }
+
+.header {
+  line-height: 60px;
+  text-align: center;
+  border-bottom: 1px solid #999; }
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+  background: url("../image/icon.png") no-repeat;
+  background-size: cover;
+  border-radius: 3px; }
+
+.protocol {
+  width: 10%; }
+
+.protocolName {
+  color: deepskyblue; }
+
+.getMessageCode {
+  position: relative; }
+
+.code {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  color: deepskyblue; }
+
+.toggleBar {
+  position: relative;
+  font-size: 0; }
+
+.toggleBar > span {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  color: #555; }
+
+input {
+  text-indent: 12px;
+  width: 100%;
+  margin: 12px auto;
+  border-width: 0 0 1px 0;
+  outline: none;
+  line-height: 50px; }
+
+button {
+  display: block;
+  border: none;
+  color: #fff;
+  background: #999;
+  padding: 12px 0;
+  border-radius: 8px;
+  width: 88%;
+  text-align: center;
+  margin: 30px auto; }
+
+a {
+  text-decoration-line: none;
+  color: deepskyblue; }
+
+.underline {
+  width: 50vw;
+  height: 2px;
+  background: deepskyblue;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: underline 2s;
+  animation-fill-mode: forwards; }
+
+@keyframes underline {
+  from {
+    left: 0; }
+  to {
+    left: 50vw; } }
+.underline-leave-to {
+  transform: translate(0, 0); }
+
+.underline-leave-active {
+  transition: all ease-in-out 2s; }
+
+.underline-leave {
+  transform: translate(50vw, 0); }
+
+.test-enter {
+  transform: translate(-100vw, 0); }
+
+.test-leave-to {
+  transform: translate(100vw, 0); }
+
+.test-enter-active, .test-leave-active {
+  transition: all ease-in-out 2s; }
+
+.test-enter-to {
+  transform: translate(0, 0); }
+
+.test-leave {
+  transform: translate(0, 0); }
+
+.all-enter, .all-leave-to {
+  transform: translate(-100vw, 0); }
+
+.all-leave-to {
+  transform: translate(100vw, 0); }
+
+.all-enter-active, .all-leave-active {
+  transition: all ease-in-out 2s; }
+
+.all-enter-to, .all-leave {
+  transform: translate(0, 0); }
+
+/*# sourceMappingURL=style.css.map */
