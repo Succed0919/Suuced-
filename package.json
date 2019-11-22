@@ -20,7 +20,7 @@
     "page-skeleton-webpack-plugin": "^0.10.12",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "vant": "^1.6.21",
+    "vant": "^2.1.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.6",
     "webpack-log": "^2.0.0"
